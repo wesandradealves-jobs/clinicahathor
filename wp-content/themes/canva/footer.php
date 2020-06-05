@@ -140,14 +140,15 @@
 						<div class="widget subscribe-widget clearfix">
 							<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id voluptate cum nesciunt magni! Ratione, quos.</h5>
 							<div class="widget-subscribe-form-result"></div>
-							<form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
+							<form id="widget-subscribe-form" action="<?php echo home_url(); ?>" role="form" method="GET" class="nobottommargin">
 								<div class="input-group divcenter">
 									<div class="input-group-prepend">
 										<div class="input-group-text"><i class="icon-email2"></i></div>
 									</div>
-									<input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Seu e-mail">
+									<input required="required" type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Seu e-mail">
 									<div class="input-group-append">
-										<button class="btn btn-success" type="submit">Assinar</button>
+										<button  onclick="document.getElementById('widget-subscribe-form').submit()" class="btn btn-success" type="submit">Assinar</button>
+										<input type="hidden" name="newsletter" />
 									</div>
 								</div>
 							</form>

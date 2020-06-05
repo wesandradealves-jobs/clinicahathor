@@ -1,11 +1,11 @@
 <?php 
     function cpt() {
         $post_types = array(
-            // array(
-            //      'title' => 'Assinantes',
-            //      'slug' => 'assinantes',
-            //      'taxonomy' => false 
-            //  ),            
+            array(
+                 'title' => 'Assinantes',
+                 'slug' => 'assinantes',
+                 'taxonomy' => false 
+             ),            
         );
 
         foreach ($post_types as $key => $value) {

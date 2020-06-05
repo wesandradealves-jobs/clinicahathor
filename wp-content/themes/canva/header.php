@@ -1,3 +1,33 @@
+<?php 
+  if ( 'GET' == $_SERVER['REQUEST_METHOD'] && isset( $_GET['newsletter'] ) ) {
+
+    $post_type = 'assinantes';
+
+    $email = $_GET['widget-subscribe-form-email'];
+
+    $new_post = array(
+    
+    'post_title'    => $email,
+
+    'post_status'   => 'publish',          
+
+    'post_type'     => $post_type 
+
+    );
+
+    $pid = wp_insert_post($new_post);
+
+    if($pid) {
+
+      add_post_meta($pid, 'email', $email, true);  
+
+      header("Location: " . $_SERVER['HTTP_REFERER'].'?newsletter='.true);
+
+    }
+
+  }
+?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="<?php print_r(get_locale()); ?>">
 <head>
