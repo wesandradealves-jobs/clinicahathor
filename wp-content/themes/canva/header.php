@@ -642,9 +642,18 @@
 
                         <!-- Top Cart
                         ============================================= -->
-<!--                         <div id="top-cart">
-                            <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a>
-                            <div class="top-cart-content">
+                        <div id="top-cart">
+                            <!-- <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a> -->
+                          <?php 
+                             foreach (pll_the_languages(array('hide_current'=>1,'dropdown'=>0,'raw'=>1,'hide_if_no_translation'=>0)) as $key => $value) {
+                                ?> 
+                                   <a href="<?php echo $value['url']; ?>" title="<?php echo $value['name']; ?>">
+                                       <img src="<?php echo $value['flag']; ?>" alt="<?php echo $value['name']; ?>">
+                                   </a>
+                                <?php 
+                             }
+                          ?>                            
+                           <!--  <div class="top-cart-content">
                                 <div class="top-cart-title">
                                     <h4>Shopping Cart</h4>
                                 </div>
@@ -674,9 +683,10 @@
                                     <span class="fleft top-checkout-price">$114.95</span>
                                     <button class="button button-3d button-small nomargin fright">View Cart</button>
                                 </div>
-                            </div>
-                        </div> -->
+                            </div> -->
+                        </div>
                         <!-- #top-cart end -->
+                        
 
                         <!-- Top Search
                         ============================================= -->
@@ -686,6 +696,8 @@
                                 <input type="text" name="s" class="form-control" value="" placeholder="Buscar...">
                             </form>
                         </div><!-- #top-search end -->
+
+
 
                     </nav><!-- #primary-menu end -->
 

@@ -5,6 +5,40 @@
 	Overwriting Default Theme Styles for Better Hanlding Updates
 -----------------------------------------------------------------*/
 
-.slider-caption h2 {
-	color: white;
+#header.sticky-header:not(.static-sticky) #top-cart,
+#top-cart,
+#top-cart > a {
+	line-height: 0!important;
+	margin: 0!important;
+}
+
+#top-cart {
+    position: absolute;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    padding-right: 5px;	
+    padding-top: 3px
+}
+
+@media (min-width: 990px) { 
+	#logo a.standard-logo {
+		display: block!important
+	}
+	#primary-menu {
+		position: relative
+	}	
+	#top-cart {
+		right: 20px;
+    	border-right: 1px whitesmoke solid;
+	} 
+}
+
+@media (max-width: 991.98px) {
+	#logo a.standard-logo {
+	    display: inline-block !important;
+	}
 }

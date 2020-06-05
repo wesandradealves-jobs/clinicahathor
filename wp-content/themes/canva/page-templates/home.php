@@ -58,13 +58,13 @@
 
 				<div class="content-wrap">
 
-					<div class="promo promo-light promo-full bottommargin-lg header-stick notopborder">
+					<!-- <div class="promo promo-light promo-full bottommargin-lg header-stick notopborder">
 						<div class="container clearfix">
 							<h3>Call us today at <span>+91.22.57412541</span> or Email us at <span>support@canvas.com</span></h3>
 							<span>We strive to provide Our Customers with Top Notch Support to make their Theme Experience Wonderful</span>
 							<a href="#" class="button button-dark button-xlarge button-rounded">Start Browsing</a>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="container clearfix">
 
@@ -530,11 +530,11 @@
 
 					</div>
 
-					<a href="#" class="button button-full center tright footer-stick">
+				<!-- 	<a href="#" class="button button-full center tright footer-stick">
 						<div class="container clearfix">
 							Canvas comes with Unlimited Customizations &amp; Options. <strong>Check Out</strong> <i class="icon-caret-right" style="top:4px;"></i>
 						</div>
-					</a>
+					</a> -->
 
 				</div>
 
