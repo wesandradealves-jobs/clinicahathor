@@ -1404,7 +1404,7 @@ var SEMICOLON = SEMICOLON || {};
 
 			$(document).on('click', function(event) {
 				if (!$(event.target).closest('#top-search').length) { $body.toggleClass('top-search-open', false); }
-				if (!$(event.target).closest('#top-cart').length) { $topCart.toggleClass('top-cart-open', false); }
+				// if (!$(event.target).closest('#top-cart').length) { $topCart.toggleClass('top-cart-open', false); }
 				if (!$(event.target).closest('#page-menu').length) { $pagemenu.toggleClass('pagemenu-active', false); }
 				if (!$(event.target).closest('#side-panel').length) { $body.toggleClass('side-panel-open', false); }
 				if (!$(event.target).closest('#primary-menu').length) { $('#primary-menu.on-click > ul').find('.d-block').removeClass('d-block'); }
@@ -1414,7 +1414,7 @@ var SEMICOLON = SEMICOLON || {};
 
 			$("#top-search-trigger").off( 'click' ).on( 'click', function(e){
 				$body.toggleClass('top-search-open');
-				$topCart.toggleClass('top-cart-open', false);
+				// $topCart.toggleClass('top-cart-open', false);
 				$( '#primary-menu > ul, #primary-menu > div > ul' ).toggleClass('d-block', false);
 				$pagemenu.toggleClass('pagemenu-active', false);
 				if ($body.hasClass('top-search-open')){
@@ -1428,12 +1428,12 @@ var SEMICOLON = SEMICOLON || {};
 
 		topcart: function(){
 
-			$("#top-cart-trigger").off( 'click' ).on( 'click', function(e){
-				$pagemenu.toggleClass('pagemenu-active', false);
-				$topCart.toggleClass('top-cart-open');
-				e.stopPropagation();
-				e.preventDefault();
-			});
+			// $("#top-cart-trigger").off( 'click' ).on( 'click', function(e){
+			// 	$pagemenu.toggleClass('pagemenu-active', false);
+			// 	$topCart.toggleClass('top-cart-open');
+			// 	e.stopPropagation();
+			// 	e.preventDefault();
+			// });
 
 		}
 

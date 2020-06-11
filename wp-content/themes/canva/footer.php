@@ -8,106 +8,67 @@
 				============================================= -->
 				<div class="footer-widgets-wrap clearfix">
 
-					<div class="col_two_third">
+					<div class="col_one_third">
 
-						<div class="col_one_third">
+						<div class="widget clearfix">
+
+							<img src="<?php echo (get_theme_mod('darklogo')) ? get_theme_mod('darklogo') : get_stylesheet_directory_uri().'/images/footer-widget-logo.png'; ?>" alt="<?php echo get_bloginfo('name'); ?>" class="footer-logo">
+
+							<p><?php echo get_bloginfo('description'); ?></p>
+
+							<div style="background: url('<?php echo get_stylesheet_directory_uri(); ?>/images/world-map.png') no-repeat center center; background-size: 100%;">
+								<?php if(get_theme_mod('endereco')) : ?>
+									<address>
+										<strong>Endereço:</strong><br>
+										<?php echo get_theme_mod('endereco'); ?>
+									</address>
+								<?php endif; ?>
+								<?php if(get_theme_mod('telefone')) : ?>
+									<abbr title="Telefone"><strong>Telefone:</strong></abbr> <?php echo get_theme_mod('telefone'); ?><br>
+								<?php endif; ?>
+								<?php if(get_theme_mod('email')) : ?>
+									<abbr title="E-mail"><strong>Email:</strong></abbr> <a href="mailto:<?php echo get_theme_mod('email'); ?>"><?php echo get_theme_mod('email'); ?></a>
+								<?php endif; ?>
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col_one_third">
+
+						<?php 
+						 $args = array(
+						    'post_type' => array( 'depoimentos' ),
+						    'posts_per_page' => -1,
+						    'order' => 'ASC',
+						    'orderby' => 'menu_order'
+						 );
+						 $_depoimentos = new WP_Query( $args );
+						 if($_depoimentos->post_count) :
+						?>							
 
 							<div class="widget clearfix">
+								<h4>Depoimentos</h4>
 
-								<img src="<?php echo (get_theme_mod('darklogo')) ? get_theme_mod('darklogo') : get_stylesheet_directory_uri().'/images/footer-widget-logo.png'; ?>" alt="<?php echo get_bloginfo('name'); ?>" class="footer-logo">
-
-								<p><?php echo get_bloginfo('description'); ?></p>
-
-								<div style="background: url('<?php echo get_stylesheet_directory_uri(); ?>/images/world-map.png') no-repeat center center; background-size: 100%;">
-									<?php if(get_theme_mod('endereco')) : ?>
-										<address>
-											<strong>Endereço:</strong><br>
-											<?php echo get_theme_mod('endereco'); ?>
-										</address>
-									<?php endif; ?>
-									<?php if(get_theme_mod('telefone')) : ?>
-										<abbr title="Telefone"><strong>Telefone:</strong></abbr> <?php echo get_theme_mod('telefone'); ?><br>
-									<?php endif; ?>
-									<?php if(get_theme_mod('email')) : ?>
-										<abbr title="E-mail"><strong>Email:</strong></abbr> <a href="mailto:<?php echo get_theme_mod('email'); ?>"><?php echo get_theme_mod('email'); ?></a>
-									<?php endif; ?>
-								</div>
-
-							</div>
-
-						</div>
-
-						<div class="col_one_third">
-
-							<div class="widget widget_links clearfix">
-
-								<h4>Sitemap</h4>
-
-								<ul>
-									<?php wp_nav_menu( array( 'container' => false, 'menu' => 'footer', 'items_wrap' => '%3$s', 'container_class'=>'' ) ); ?>
-								</ul>
-
-							</div>
-
-						</div>
-
-
-		                <?php 
-		                   $args = array(
-		                      'post_type' => array( 'post' ),
-		                      'posts_per_page' => 3,
-		                      'order' => 'ASC',
-		                      'orderby' => 'menu_order'
-		                   );
-		                   $blog = new WP_Query( $args );
-		                   if($blog->post_count) :
-		                ?> 						
-
-							<div class="col_one_third col_last">
-
-								<div class="widget clearfix">
-									<h4>Últimas do Blog</h4>
-
-									<div id="post-list-footer">
-
-										<?php while ($blog->have_posts()) : $blog->the_post();  ?>
-											<div class="spost clearfix">
-												<div class="entry-c">
-													<div class="entry-title">
-														<h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+								<div class="fslider testimonial no-image nobg noborder noshadow nopadding" data-animation="slide" data-arrows="false">
+									<div class="flexslider">
+										<div class="slider-wrap">
+											<?php while ($_depoimentos->have_posts()) : $_depoimentos->the_post();  ?>
+												<div class="slide">
+													<div class="testi-image">
+														<a href="#"><img src="<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID), 'full'); ?>" alt="<?php the_title(); ?>"></a>
 													</div>
-													<ul class="entry-meta">
-														<li><?php the_date(); ?></li>
-													</ul>
+													<div class="testi-content">
+														<p><?php echo get_the_content(); ?></p>
+														<div class="testi-meta">
+															<?php the_title(); ?>
+															<span><?php echo get_field('role'); ?></span>
+														</div>
+													</div>
 												</div>
-											</div>
-						                <?php 
-							            	endwhile;  
-							                wp_reset_query();
-							                wp_reset_postdata(); 
-						                ?> 										
-
-									<!-- 	<div class="spost clearfix">
-											<div class="entry-c">
-												<div class="entry-title">
-													<h4><a href="#">Elit Assumenda vel amet dolorum quasi</a></h4>
-												</div>
-												<ul class="entry-meta">
-													<li>10th July 2014</li>
-												</ul>
-											</div>
+											<?php endwhile; wp_reset_query(); wp_reset_postdata(); ?> 
 										</div>
-
-										<div class="spost clearfix">
-											<div class="entry-c">
-												<div class="entry-title">
-													<h4><a href="#">Debitis nihil placeat, illum est nisi</a></h4>
-												</div>
-												<ul class="entry-meta">
-													<li>10th July 2014</li>
-												</ul>
-											</div>
-										</div> -->
 									</div>
 								</div>
 
@@ -115,88 +76,18 @@
 
 						<?php endif; ?>
 
-					</div>
+						<div class="widget widget_links clearfix">
 
-					<div class="col_one_third col_last">
+							<h4>Sitemap</h4>
 
-						<!-- <div class="widget clearfix" style="margin-bottom: -20px;">
+							<ul>
+								<?php wp_nav_menu( array( 'container' => false, 'menu' => 'footer', 'items_wrap' => '%3$s', 'container_class'=>'' ) ); ?>
+							</ul>
 
-							<div class="row">
+						</div>						
 
-								<div class="col-lg-6 bottommargin-sm">
-									<div class="counter counter-small"><span data-from="50" data-to="15065421" data-refresh-interval="80" data-speed="3000" data-comma="true"></span></div>
-									<h5 class="nobottommargin">Total Downloads</h5>
-								</div>
+						<div class="widget clearfix">
 
-								<div class="col-lg-6 bottommargin-sm">
-									<div class="counter counter-small"><span data-from="100" data-to="18465" data-refresh-interval="50" data-speed="2000" data-comma="true"></span></div>
-									<h5 class="nobottommargin">Clients</h5>
-								</div>
-
-							</div>
-
-						</div> -->
-
-						<div class="widget subscribe-widget clearfix">
-							<h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id voluptate cum nesciunt magni! Ratione, quos.</h5>
-							<div class="widget-subscribe-form-result"></div>
-							<form id="widget-subscribe-form" action="<?php echo home_url(); ?>" role="form" method="GET" class="nobottommargin">
-								<div class="input-group divcenter">
-									<div class="input-group-prepend">
-										<div class="input-group-text"><i class="icon-email2"></i></div>
-									</div>
-									<input required="required" type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Seu e-mail">
-									<div class="input-group-append">
-										<button  onclick="document.getElementById('widget-subscribe-form').submit()" class="btn btn-success" type="submit">Assinar</button>
-										<input type="hidden" name="newsletter" />
-									</div>
-								</div>
-							</form>
-						</div>
-
-						<!-- <div class="widget clearfix" style="margin-bottom: -20px;">
-
-							<div class="row">
-
-								<div class="col-lg-6 clearfix bottommargin-sm">
-									<a href="#" class="social-icon si-dark si-colored si-facebook nobottommargin" style="margin-right: 10px;">
-										<i class="icon-facebook"></i>
-										<i class="icon-facebook"></i>
-									</a>
-									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Like us</strong><br>on Facebook</small></a>
-								</div>
-								<div class="col-lg-6 clearfix">
-									<a href="#" class="social-icon si-dark si-colored si-rss nobottommargin" style="margin-right: 10px;">
-										<i class="icon-rss"></i>
-										<i class="icon-rss"></i>
-									</a>
-									<a href="#"><small style="display: block; margin-top: 3px;"><strong>Subscribe</strong><br>to RSS Feeds</small></a>
-								</div>
-
-							</div>
-
-						</div> -->
-
-					</div>
-
-				</div><!-- .footer-widgets-wrap end -->
-
-			</div>
-
-			<!-- Copyrights
-			============================================= -->
-			<div id="copyrights">
-
-				<div class="container clearfix">
-
-					<div class="col_half">
-						Copyrights &copy; <?php echo date('Y'); ?> Todos os direitos reservados por <?php echo get_bloginfo('name'); ?>.<br>
-						desenvolvido por <b>CAQO</b>
-						<!-- <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div> -->
-					</div>
-
-					<div class="col_half col_last tright">
-						<div class="fright clearfix">
 							<?php if(get_theme_mod('facebook')) : ?>
 								<a href="<?php echo get_theme_mod('facebook'); ?>" target="_blank" class="social-icon si-small si-borderless si-facebook">
 									<i class="icon-facebook"></i>
@@ -244,19 +135,59 @@
 									<i class="icon-youtube"></i>
 									<i class="icon-youtube"></i>
 								</a>
-							<?php endif; ?>							
+							<?php endif; ?>				
+
 						</div>
 
-						<div class="clear"></div>
+					</div>
 
-						<?php if(get_theme_mod('email')) : ?>
-							<i class="icon-envelope2"></i> <a href="mailto:<?php echo get_theme_mod('email'); ?>"><?php echo get_theme_mod('email'); ?></a> 
-						<?php endif; ?>
+					<div class="col_one_third col_last">
 
-						<?php if(get_theme_mod('telefone')) : ?>
-							<span class="middot">&middot;</span> 
-							<i class="icon-headphones"></i> <?php echo get_theme_mod('telefone'); ?> 
-						<?php endif; ?>
+						<div class="widget quick-contact-widget clearfix">
+
+							<h4>Fale conosco</h4>
+
+							<div class="quick-contact-form-result"></div>
+
+							<form id="quick-contact-form" name="quick-contact-form" action="include/quickcontact.php" method="post" class="quick-contact-form nobottommargin">
+
+								<div class="form-process"></div>
+
+								<div class="input-group divcenter">
+									<div class="input-group-prepend">
+												<!-- <div class="input-group-text"><i class="icon-user"></i></div> -->
+											</div>
+									<input type="text" class="required form-control input-block-level" id="quick-contact-form-name" name="quick-contact-form-name" value="" placeholder="Nome" />
+								</div>
+								<div class="input-group divcenter">
+									<div class="input-group-prepend">
+										<!-- <div class="input-group-text"><i class="icon-email2"></i></div> -->
+									</div>
+									<input type="text" class="required form-control email input-block-level" id="quick-contact-form-email" name="quick-contact-form-email" value="" placeholder="Email" />
+								</div>
+								<textarea class="required form-control input-block-level short-textarea" id="quick-contact-form-message" name="quick-contact-form-message" rows="4" cols="30" placeholder="Message"></textarea>
+								<input type="text" class="hidden" id="quick-contact-form-botcheck" name="quick-contact-form-botcheck" value="" />
+								<button type="submit" id="quick-contact-form-submit" name="quick-contact-form-submit" class="btn btn-danger nomargin" value="submit">Enviar</button>
+
+							</form>
+
+						</div>
+
+					</div>
+
+				</div><!-- .footer-widgets-wrap end -->
+
+			</div>
+
+			<!-- Copyrights
+			============================================= -->
+			<div id="copyrights">
+
+				<div class="container clearfix">
+
+					<div class="col_half">
+						Copyrights &copy; <?php echo date('Y'); ?> Todos os direitos reservados por <?php echo get_bloginfo('name'); ?>.<br>
+						desenvolvido por <b>CAQO</b>
 					</div>
 
 				</div>
@@ -299,5 +230,50 @@
     		padding:0!important;
     	}
     </style>
+
+	<script src="https://maps.google.com/maps/api/js?key=AIzaSyCzkxzbEni5vR_Ugt1De8gBzrLX3236bnA"></script>
+	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery.gmap.js"></script>
+	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jssocials.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js" integrity="sha256-+Q/z/qVOexByW1Wpv81lTLvntnZQVYppIL1lBdhtIq0=" crossorigin="anonymous"></script>
+
+    <script>
+        $("#share").jsSocials({
+            shares: ["email", "twitter", "facebook"]
+        });
+    </script>	
+
+	<script>
+
+		jQuery('#google-map').gMap({
+
+			latitude: -37.9712369,
+			longitude: 144.4926746,
+			maptype: 'ROADMAP',
+			zoom: 9,
+			markers: [
+				{
+					address: "Melbourne, Australia",
+					html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Envato</span></h4><p class="nobottommargin">Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
+					icon: {
+						image: "images/icons/map-icon-red.png",
+						iconsize: [32, 39],
+						iconanchor: [13,39]
+					}
+				}
+			],
+			doubleclickzoom: false,
+			controls: {
+				panControl: true,
+				zoomControl: true,
+				mapTypeControl: true,
+				scaleControl: false,
+				streetViewControl: false,
+				overviewMapControl: false
+			}
+		});
+
+	</script>	
+
+	<?php wp_footer(); ?>
 </body>
 </html>

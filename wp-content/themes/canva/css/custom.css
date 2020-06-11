@@ -5,7 +5,9 @@
 	Overwriting Default Theme Styles for Better Hanlding Updates
 -----------------------------------------------------------------*/
 
-#header.sticky-header:not(.static-sticky) #top-cart,
+@import 'flag-icon.css';
+
+/*#header.sticky-header:not(.static-sticky) #top-cart,
 #top-cart,
 #top-cart > a {
 	line-height: 0!important;
@@ -22,6 +24,15 @@
     right: 0;
     padding-right: 5px;	
     padding-top: 3px
+}*/
+
+#top-cart {
+	display: flex;
+	align-items: center;
+}
+
+#top-cart > * {
+	margin: 0 5px;
 }
 
 @media (min-width: 990px) { 
@@ -31,14 +42,20 @@
 	#primary-menu {
 		position: relative
 	}	
-	#top-cart {
+	/*#top-cart {
 		right: 20px;
     	border-right: 1px whitesmoke solid;
-	} 
+	} */
 }
 
 @media (max-width: 991.98px) {
 	#logo a.standard-logo {
 	    display: inline-block !important;
 	}
+}
+
+@media (max-width: 991.98px) {
+	#top-search a {
+	    right: 70px;
+	}	
 }

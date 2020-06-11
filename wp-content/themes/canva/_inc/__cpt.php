@@ -2,10 +2,35 @@
     function cpt() {
         $post_types = array(
             array(
-                 'title' => 'Assinantes',
-                 'slug' => 'assinantes',
+                 'title' => 'Equipe',
+                 'slug' => 'equipe',
                  'taxonomy' => false 
-             ),            
+             ),              
+            array(
+                 'title' => 'Clientes',
+                 'slug' => 'clientes',
+                 'taxonomy' => false 
+             ),             
+            array(
+                 'title' => 'Depoimentos',
+                 'slug' => 'depoimentos',
+                 'taxonomy' => true 
+             ), 
+            array(
+                 'title' => 'Casos Clinicos',
+                 'slug' => 'casos-clinicos',
+                 'taxonomy' => false 
+             ),                            
+            array(
+                 'title' => 'Portfolio',
+                 'slug' => 'portfolio',
+                 'taxonomy' => true 
+             ),   
+            array(
+                 'title' => 'Tratamentos',
+                 'slug' => 'tratamentos',
+                 'taxonomy' => true 
+             ),                         
         );
 
         foreach ($post_types as $key => $value) {
@@ -52,7 +77,7 @@
                 'show_ui' => true,
                 'query_var' => true,
                 'rewrite' => true,
-                'show_in_nav_menus' => false,
+                'show_in_nav_menus' => true,
                 'capability_type' => 'post',
                 'hierarchical' => false,
                 'show_in_rest' => true,

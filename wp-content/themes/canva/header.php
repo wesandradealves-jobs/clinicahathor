@@ -58,7 +58,7 @@
     <?php wp_head(); ?>
 </head>
 
-<body class="stretched">
+<body class="stretched device-xl">
 
     <!-- Document Wrapper
     ============================================= -->
@@ -673,17 +673,9 @@
                         <!-- Top Cart
                         ============================================= -->
                         <div id="top-cart">
-                            <!-- <a href="#" id="top-cart-trigger"><i class="icon-shopping-cart"></i><span>5</span></a> -->
-                          <?php 
-                             foreach (pll_the_languages(array('hide_current'=>1,'dropdown'=>0,'raw'=>1,'hide_if_no_translation'=>0)) as $key => $value) {
-                                ?> 
-                                   <a href="<?php echo $value['url']; ?>" title="<?php echo $value['name']; ?>">
-                                       <img src="<?php echo $value['flag']; ?>" alt="<?php echo $value['name']; ?>">
-                                   </a>
-                                <?php 
-                             }
-                          ?>                            
-                           <!--  <div class="top-cart-content">
+                            <a href="<?php echo get_page_link(get_page_by_path('quem-somos')->ID).'?lang=es'; ?>" id="top-cart-trigger"><i class="flag-icon flag-icon-es flag-icon-squared"></i></a>
+                            <a href="<?php echo get_page_link(get_page_by_path('quem-somos')->ID).'?lang=en'; ?>" id="top-cart-trigger"><i class="flag-icon flag-icon-us flag-icon-squared"></i></a>
+                            <!--  <div class="top-cart-content">
                                 <div class="top-cart-title">
                                     <h4>Shopping Cart</h4>
                                 </div>
@@ -722,7 +714,7 @@
                         ============================================= -->
                         <div id="top-search">
                             <a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-                            <form action="<?php echo home_url(); ?>" method="get">
+                            <form  role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
                                 <input type="text" name="s" class="form-control" value="" placeholder="Buscar...">
                             </form>
                         </div><!-- #top-search end -->
